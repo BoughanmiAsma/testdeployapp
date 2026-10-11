@@ -1,0 +1,19 @@
+{
+  "name": "template-vite-react-node-postgres",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "start:dev": "docker compose up --build",
+    "start:prod": "docker compose -f docker-compose.prod.yml up --build -d",
+    "install:all": "pnpm -w install",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "build:frontend": "pnpm --filter frontend build",
+    "build:backend": "echo \"backend build (none)\"",
+    "build": "pnpm build:frontend && pnpm build:backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
