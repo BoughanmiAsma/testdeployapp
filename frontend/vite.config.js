@@ -9,7 +9,7 @@ export default defineConfig({
         proxy: {
             // Forward /api requests to backend in dev
             '/api': {
-                target: 'http://localhost:5000',
+                target: process.env.VITE_BACKEND_URL || process.env.BACKEND_URL || 'http://backend:5000',
                 changeOrigin: true,
                 secure: false
             }

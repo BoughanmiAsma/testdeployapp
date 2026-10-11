@@ -7,7 +7,7 @@ const pool = new Pool({
     max: parseInt(process.env.PG_POOL_MAX || '10', 10),
     idleTimeoutMillis: parseInt(process.env.PG_IDLE_TIMEOUT || '30000', 10),
     connectionTimeoutMillis: parseInt(process.env.PG_CONN_TIMEOUT || '5000', 10),
-    ssl: process.env.NODE_ENV === 'production'
+    ssl: (process.env.PG_SSL === 'true' || (connectionString && connectionString.includes('sslmode=require')))
         ? { rejectUnauthorized: false }
         : false
 });

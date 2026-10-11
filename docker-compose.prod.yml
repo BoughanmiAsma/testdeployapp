@@ -6,7 +6,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
       timeout: 3s
       retries: 5
@@ -17,14 +17,14 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     env_file:
-      - ./backend/.env
+      - ./backend/.env.example
     depends_on:
       postgres:
         condition: service_healthy
     ports:
       - "5000:5000"
     healthcheck:
-      test: ["CMD-SHELL", "wget --spider -q http://localhost:5000/api/health || exit 1"]
+      test: ["CMD-SHELL", "wget --spider -q http://127.0.0.1:5000/api/health || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
