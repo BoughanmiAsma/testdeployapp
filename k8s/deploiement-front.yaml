@@ -14,11 +14,11 @@ spec:
     spec:
       containers:
       - name: react-frontend
-        image: boughanmiasma/reactnodeposgres-frontendf:v0.1 
+        image: boughanmiasma/template-vite-react-node-postgres-master-frontend:v0.2
 
 
         ports:
-        - containerPort: 80
+        - containerPort: 3000
 --- 
 apiVersion: v1
 kind: Service
@@ -29,5 +29,5 @@ spec:
     app: frontend
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 3000
+      targetPort: 3000

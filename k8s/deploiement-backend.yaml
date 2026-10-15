@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-backend
-        image: boughanmiasma/reactnodeposgres:v0.1
+        image: boughanmiasma/template-vite-react-node-postgres-master-backend:v0.1
         env:
           - name: DATABASE_URL
             valueFrom: 
